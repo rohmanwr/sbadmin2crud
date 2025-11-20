@@ -11,10 +11,17 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('no_rm')->unique(); // nomor rekam medis
+            $table->string('no_rm')->unique();
             $table->date('tanggal_lahir')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('alamat')->nullable();
+
+            $table->unsignedBigInteger('metode_pembayaran_id')->nullable();
+            $table->foreign('metode_pembayaran_id')
+                ->references('id')
+                ->on('metode_pembayaran')
+                ->onDelete('set null');
+
             $table->string('keluhan')->nullable();
             $table->string('telepon')->nullable();
             $table->timestamps();
@@ -23,6 +30,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        Schema::table('pasiens', function (Blueprint $table) {
+            $table->dropForeign(['metode_pembayaran_id']);
+        });
+
         Schema::dropIfExists('pasiens');
     }
 };

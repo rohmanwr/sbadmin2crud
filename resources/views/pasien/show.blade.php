@@ -25,6 +25,10 @@
                 <td>{{ $pasien->alamat }}</td>
             </tr>
             <tr>
+                <th>MetodePembayaran</th>
+                <td>{{ $pasien->metode_pembayaran }}</td>
+            </tr>
+            <tr>
                 <th>Telepon</th>
                 <td>{{ $pasien->no_hp }}</td>
             </tr>

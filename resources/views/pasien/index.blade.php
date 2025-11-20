@@ -7,7 +7,7 @@
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('pasien.create') }}" class="btn btn-primary mb-3">Tambah Pasien</a>
+    <a href="{{ route('pasien.create') }}" class="btn btn-primary mb-3">Tambah Pasien Baru</a>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -21,6 +21,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Alamat</th>
+                            <th>Metode Pembayaran</th>
                             <th>Keluhan</th>
                             <th>Telepon</th>
                             <th>Aksi</th>
@@ -35,6 +36,14 @@
                             <td>{{ $pasien->jenis_kelamin }}</td>
                             <td>{{ $pasien->tanggal_lahir }}</td>
                             <td>{{ $pasien->alamat }}</td>
+                            <td>
+                                @if($pasien->metodePembayaran)
+                                {{ ucfirst($pasien->metodePembayaran->jenis) }} - {{ $pasien->metodePembayaran->nama_metode }}
+                                @else
+                                -
+                                @endif
+                            </td>
+
                             <td>{{ $pasien->keluhan }}</td>
                             <td>{{ $pasien->telepon }}</td>
                             <td>

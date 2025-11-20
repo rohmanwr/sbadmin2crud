@@ -40,6 +40,18 @@
             <label>keluhan</label>
             <textarea name="keluhan" class="form-control">{{ $pasien->keluhan }}</textarea>
         </div>
+        <div class="form-group mt-2">
+            <label>Metode Pembayaran</label>
+            <select name="metode_pembayaran_id" class="form-control">
+                @foreach ($metode as $m)
+                <option value="{{ $m->id }}"
+                    {{ $pasien->metode_pembayaran == $m->id ? 'selected' : '' }}>
+                    {{ ucfirst($m->jenis) }} - {{ $m->nama_metode }}
+                </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="mb-3">
             <label>Telepon</label>
             <input type="text" name="telepon" class="form-control" value="{{ $pasien->telepon }}">

@@ -41,4 +41,11 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('metode.index') }}">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Metode Pembayaran</span>
+        </a>
+    </li>
+
 </ul>

@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('dokter', DokterController::class);
     Route::resource('rekam-medis', RekamMedisController::class);
     Route::resource('spesialis', SpesialisController::class)->middleware('auth');
+    Route::resource('metode', App\Http\Controllers\MetodePembayaranController::class);
 });
 
 Route::get('/', function () {
